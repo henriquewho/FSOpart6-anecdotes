@@ -1,0 +1,10 @@
+.anecdote {
+    margin-bottom: 10px; 
+    border: 1px solid grey; 
+    padding: 3px; 
+}
+
+.anecdote-content {
+    margin-bottom: 5px;
+    background-color: rgb(238, 236, 236);
+}
