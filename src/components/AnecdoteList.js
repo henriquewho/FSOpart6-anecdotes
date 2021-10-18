@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
+
 import { createVote } from "../reducers/anecdoteReducer";
+import { createMessage, removeMessage } from "../reducers/notificationReducer";
 
 
 const Anecdote = ({anecdote, handleVote}) => {
@@ -22,27 +24,10 @@ const AnecdoteList = () => {
     const dispatch = useDispatch(); 
 
     const handleVote = (id) => {
-        //console.log('vote', id)
-        let numOfVotes = anecdotes.map(each=>each.votes)
-        let position=-1;
-        for (let i=0; i<anecdotes.length; i++){
-            if (anecdotes[i].id === id) {
-                position = i; break; 
-            }
-        }
-
         dispatch(createVote(id))
 
-        numOfVotes = anecdotes.map(each=>each.votes)
-        const thisAnecdote = anecdotes.find(each=>each.id === id); 
-        const votesThis = thisAnecdote.votes; 
-
-        for (let i=position; i>=0; i--){
-            if (votesThis > anecdotes[i].votes) {
-                console.log('trigger change of', thisAnecdote.id);
-                
-            }
-        }        
+        dispatch(createMessage('You voted on a message'))
+        setTimeout(()=>dispatch(removeMessage()), 4000);
     }
 
     return (
