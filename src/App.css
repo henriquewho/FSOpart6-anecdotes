@@ -12,3 +12,11 @@
 .filter {
     margin-bottom: 5px;
 }
+
+.notification {
+    background-color: rgb(193, 248, 193);
+}
+
+h2 {
+    margin-bottom: 50px;
+}
