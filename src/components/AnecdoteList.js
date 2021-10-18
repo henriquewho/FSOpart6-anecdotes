@@ -21,6 +21,8 @@ const Anecdote = ({anecdote, handleVote}) => {
 const AnecdoteList = () => {
     const fullState = useSelector(state => state)
     const anecdotes = useSelector (state => state.anecdotes); 
+    const filter = useSelector( state => state.filter)
+
     const dispatch = useDispatch(); 
 
     const handleVote = (id) => {
@@ -32,11 +34,12 @@ const AnecdoteList = () => {
 
     return (
         <div>
-            {anecdotes.sort( (a,b)=>{
-                if (a.votes > b.votes) return -1; 
-                if (a.votes < b.votes) return 1; 
-                return 0; 
-            }).map(each =>
+            {anecdotes.filter(each=>each.content.toLowerCase().includes(filter.toLowerCase()))
+                .sort( (a,b)=>{
+                    if (a.votes > b.votes) return -1; 
+                    if (a.votes < b.votes) return 1; 
+                    return 0; 
+                }).map(each =>
                 <Anecdote key={each.id} anecdote={each} handleVote={handleVote}/>
             )}
             <button onClick={()=>console.log('full state: ',fullState)}>State</button>
