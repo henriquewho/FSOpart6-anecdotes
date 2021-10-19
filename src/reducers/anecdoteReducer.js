@@ -15,14 +15,6 @@ const asObject = (anecdote) => {
   }
 }
 
-/*
-export const createAnecdote = data => {
-  return ({
-    type: 'NEW_ANECDOTE', data
-  })
-}
-*/
-
 export const createAnecdote = content => {
   return async dispatch => {
     const newAnecdote = await anecdoteService.create(content)
@@ -30,12 +22,11 @@ export const createAnecdote = content => {
   }
 }
 
-export const createVote = (id) => {
-  return (
-    {
-      type: 'VOTE', data: {id}
-    }
-  )
+export const createVote = (id, votes) => {
+  return async dispatch => {
+    const modifiedAnecdote = await anecdoteService.vote(id, votes); 
+    dispatch({type: 'VOTE', data: {id: modifiedAnecdote.id}})
+  }
 }
 
 export const initializeAnecdotes = () =>{
@@ -53,6 +44,7 @@ const reducer = (state = [], action) => {
 
   switch(action.type){
     case 'VOTE': {
+      console.log('entered vote action on reducer');
       const id = action.data.id; 
       const noteToChange = state.find(each => each.id === id); 
       noteToChange.votes++; 

@@ -14,7 +14,6 @@ function AnecdoteForm() {
         const content = e.target.anecdote.value; 
         e.target.anecdote.value = ''; 
 
-        //const newAnecdote = await anecdoteService.create(content); 
         dispatch(createAnecdote(content))
 
         dispatch(createMessage('You created a note'));
