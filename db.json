@@ -3,7 +3,7 @@
     {
       "id": 1,
       "content": "first anecdote",
-      "votes": 1
+      "votes": 11
     },
     {
       "id": 2,
@@ -12,7 +12,7 @@
     },
     {
       "content": "henrique",
-      "votes": 0,
+      "votes": 8,
       "id": 3
     }
   ]

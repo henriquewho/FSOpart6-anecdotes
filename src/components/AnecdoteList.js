@@ -13,7 +13,7 @@ const Anecdote = ({anecdote, handleVote}) => {
             </span>
             <div>
                 has {anecdote.votes}
-                &nbsp; <button onClick={()=>handleVote(anecdote.id)}>{anecdote.votes>1 ? 'votes' : 'vote'}</button>
+                &nbsp; <button onClick={()=>handleVote(anecdote.id, anecdote.votes)}>{anecdote.votes>1 ? 'votes' : 'vote'}</button>
             </div>
         </li>
     )
@@ -27,7 +27,8 @@ const AnecdoteList = () => {
 
     const dispatch = useDispatch(); 
 
-    const handleVote = (id) => {
+    const handleVote = async (id, votes) => {
+        await anecdoteService.vote(id, votes); 
         dispatch(createVote(id))
 
         dispatch(createMessage('You voted on a message'))
