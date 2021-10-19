@@ -11,7 +11,7 @@ const Anecdote = ({anecdote, handleVote}) => {
             </span>
             <div>
                 has {anecdote.votes}
-                &nbsp; <button onClick={()=>handleVote(anecdote.id, anecdote.votes)}>{anecdote.votes>1 ? 'votes' : 'vote'}</button>
+                &nbsp; <button onClick={()=>handleVote(anecdote)}>{anecdote.votes>1 ? 'votes' : 'vote'}</button>
             </div>
         </li>
     )
@@ -25,11 +25,9 @@ const AnecdoteList = () => {
 
     const dispatch = useDispatch(); 
 
-    const handleVote = async (id, votes) => {
+    const handleVote = async ({id, votes, content}) => {
         dispatch(createVote(id, votes))
-
-        dispatch(createMessage('You voted on a message'))
-        setTimeout(()=>dispatch(removeMessage()), 4000);
+        dispatch(createMessage(`You vote on an anecdote: ${content}`, 2));
     }
 
     return (

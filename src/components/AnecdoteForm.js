@@ -1,5 +1,5 @@
 import React from 'react'
-import {useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 
 import {createAnecdote} from '../reducers/anecdoteReducer'
 import {createMessage, removeMessage} from '../reducers/notificationReducer'
@@ -8,6 +8,7 @@ import anecdoteService from '../services/anecdotes'
 function AnecdoteForm() {
 
     const dispatch = useDispatch()
+    const message = useSelector(state => state.message)
 
     const addAnecdote = async e =>{
         e.preventDefault(); 
@@ -16,8 +17,7 @@ function AnecdoteForm() {
 
         dispatch(createAnecdote(content))
 
-        dispatch(createMessage('You created a note'));
-        setTimeout(()=>dispatch(removeMessage()), 4000);
+        dispatch(createMessage(`You created a note: ${content}`, 2));
     }
 
     return (

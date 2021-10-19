@@ -3,27 +3,12 @@
     {
       "id": 1,
       "content": "first anecdote",
-      "votes": 11
+      "votes": 12
     },
     {
       "id": 2,
       "content": "second anecdote",
-      "votes": 17
-    },
-    {
-      "content": "henrique",
-      "votes": 9,
-      "id": 3
-    },
-    {
-      "content": "new anec",
-      "votes": 8,
-      "id": 4
-    },
-    {
-      "content": "with async ac",
-      "votes": 5,
-      "id": 5
+      "votes": 18
     }
   ]
 }

@@ -1,10 +1,21 @@
 const initialMessage = ''; 
 
+/*
 export const createMessage = msg => {
     return ({
         type: 'SET_MESSAGE', data: {msg}
     })
 }
+*/
+
+export const createMessage = (msg, timer) => {
+    return async dispatch => {
+        await dispatch({type: 'SET_MESSAGE', data: {msg}})
+        setTimeout(async ()=>await dispatch(removeMessage()), timer*1000)
+    }
+}
+
+
 export const removeMessage = () => {
     return ({
         type: 'REMOVE_MESSAGE'
