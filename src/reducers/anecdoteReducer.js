@@ -1,10 +1,5 @@
 import anecdoteService from '../services/anecdotes'
 
-const anecdotesAtStart = [
-  'If it hurts, do it more often',
-  'Adding manpower to a late software project makes it later!',
-]
-
 const getId = () => (100000 * Math.random()).toFixed(0)
 
 const asObject = (anecdote) => {
@@ -35,8 +30,6 @@ export const initializeAnecdotes = () =>{
     dispatch({type:'INIT', data: anecdotes})
   }
 }
-
-const initialState = anecdotesAtStart.map(asObject)
 
 const reducer = (state = [], action) => {
   //console.log('state now: ', state)
