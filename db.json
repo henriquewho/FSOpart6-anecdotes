@@ -1,14 +1,19 @@
 {
-    "anecdotes": [
-        {
-            "id": 1, 
-            "content": "first anecdote",
-            "votes": 1
-        },
-        {
-            "id": 2, 
-            "content": "second anecdote",
-            "votes": 11
-        }
-    ]
+  "anecdotes": [
+    {
+      "id": 1,
+      "content": "first anecdote",
+      "votes": 1
+    },
+    {
+      "id": 2,
+      "content": "second anecdote",
+      "votes": 11
+    },
+    {
+      "content": "henrique",
+      "votes": 0,
+      "id": 3
+    }
+  ]
 }

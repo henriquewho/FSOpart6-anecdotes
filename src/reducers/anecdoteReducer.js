@@ -13,9 +13,9 @@ const asObject = (anecdote) => {
   }
 }
 
-export const createAnecdote = (content) => {
+export const createAnecdote = data => {
   return ({
-    type: 'NEW_ANECDOTE', data: {content}
+    type: 'NEW_ANECDOTE', data
   })
 }
 
@@ -36,7 +36,6 @@ export const initializeAnecdotes = anecdotes =>{
 const initialState = anecdotesAtStart.map(asObject)
 
 const reducer = (state = [], action) => {
-  
   //console.log('state now: ', state)
   //console.log('action', action)
 
@@ -53,7 +52,7 @@ const reducer = (state = [], action) => {
     }
 
     case 'NEW_ANECDOTE': {
-      const newAnecdote = asObject(action.data.content); 
+      const newAnecdote = action.data; 
       return state.concat(newAnecdote); 
     }
 
