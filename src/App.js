@@ -5,7 +5,6 @@ import AnecdoteList from './components/AnecdoteList'
 import Filter from './components/Filter'
 import Notification from './components/Notification'
 
-import anecService from './services/anecdotes'
 import { initializeAnecdotes } from './reducers/anecdoteReducer'
 import { useDispatch } from 'react-redux'
 
@@ -15,8 +14,7 @@ const App = () => {
   const dispatch = useDispatch()
   
   useEffect( ()=>{
-    anecService.getAll()
-    .then(anecdotes => dispatch(initializeAnecdotes(anecdotes)))
+    dispatch(initializeAnecdotes())
   })
 
   /* const state = useSelector(state => state); 
@@ -28,13 +26,13 @@ const App = () => {
     <div>
       <h2>Anecdotes {/*<button onClick={show}>State</button>*/}</h2>
 
-      <Notification />
-
       <Filter/>
 
       <AnecdoteList/>
 
       <AnecdoteForm/>
+
+      <Notification />
 
     </div>
   )

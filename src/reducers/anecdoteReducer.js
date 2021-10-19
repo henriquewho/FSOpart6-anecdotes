@@ -1,3 +1,5 @@
+import anecdoteService from '../services/anecdotes'
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -27,10 +29,11 @@ export const createVote = (id) => {
   )
 }
 
-export const initializeAnecdotes = anecdotes =>{
-  return ({
-    type: 'INIT', data: anecdotes
-  })
+export const initializeAnecdotes = () =>{
+  return async dispatch => {
+    const anecdotes = await anecdoteService.getAll(); 
+    dispatch({type:'INIT', data: anecdotes})
+  }
 }
 
 const initialState = anecdotesAtStart.map(asObject)
